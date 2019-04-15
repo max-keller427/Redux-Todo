@@ -10,5 +10,5 @@ export const addTodo = newTodo => ({
 
 export const toggleTodo = id => ({
   type: TOGGLE_TODO,
-  id
+  payload: id
 });
