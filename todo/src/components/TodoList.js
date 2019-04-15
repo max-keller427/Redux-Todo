@@ -23,7 +23,25 @@ class TodoList extends React.Component {
   };
 
   render() {
-    return <div>"sup"</div>;
+    return (
+      <>
+        <div>
+          <h1>ToDo List</h1>
+          {this.props.todo.map((task, index) => (
+            <h4 onClick={e => this.toggleTask(e, index)} key={index}>
+              {task.task}
+              {task.completed && <h4 className="completed" />}
+            </h4>
+          ))}
+        </div>
+        <input
+          placeholder="Add Task"
+          value={this.state.newTask}
+          onChange={this.handleChanges}
+        />
+        <button onSubmit={this.addTask} />
+      </>
+    );
   }
 }
 const mapStateToProps = state => {

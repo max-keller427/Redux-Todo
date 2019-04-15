@@ -1,7 +1,10 @@
 import { ADD_TODO, TOGGLE_TODO } from "../actions";
 
 const initialState = {
-  todo: ["Clean Room", "Buy Groceries"]
+  todo: [
+    { task: "Clean Room", completed: false },
+    { task: "Buy Groceries", completed: false }
+  ]
 };
 
 export const todoReducer = (state = initialState, action) => {
