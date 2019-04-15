@@ -5,7 +5,7 @@ import { addTodo, toggleTodo } from "../actions";
 
 class TodoList extends React.Component {
   state = {
-    newTask: ""
+    newTodo: ""
   };
 
   handleChanges = e => {
@@ -14,7 +14,9 @@ class TodoList extends React.Component {
 
   addTask = e => {
     e.preventDefault();
-    this.props.addNewTask(this.state.newTask);
+    console.log("task added");
+    this.props.addTodo(this.state.newTodo);
+    // this.setState({ newTask: "" });
   };
 
   toggleTask = (e, index) => {
@@ -35,11 +37,11 @@ class TodoList extends React.Component {
           ))}
         </div>
         <input
-          placeholder="Add Task"
+          placeholder="New Task"
           value={this.state.newTask}
           onChange={this.handleChanges}
         />
-        <button onSubmit={this.addTask} />
+        <button onClick={this.addTask}>Add Task </button>
       </>
     );
   }

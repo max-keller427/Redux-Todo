@@ -2,10 +2,10 @@ export const ADD_TODO = "ADD_TODO";
 export const TOGGLE_TODO = "TOGGLE_TODO";
 
 let nextTodoId = 0;
-export const addTodo = task => ({
+export const addTodo = newTodo => ({
   type: ADD_TODO,
   id: nextTodoId++,
-  task
+  payload: newTodo
 });
 
 export const toggleTodo = id => ({
