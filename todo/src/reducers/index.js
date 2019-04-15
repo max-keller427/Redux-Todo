@@ -1,24 +1,29 @@
 import { ADD_TODO, TOGGLE_TODO } from "../actions";
 
 const initialState = {
-  todo: []
+  todo: ["Clean Room", "Buy Groceries"]
 };
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return [
+      const newTodo = {
+        task: action.payload,
+        completed: false
+      };
+      return {
         ...state,
-        {
-          id: action.id,
-          task: action.task,
-          completed: false
-        }
-      ];
+        todo: [...state.todo, newTodo]
+      };
     case TOGGLE_TODO:
-      return state.map(todo =>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-      );
+      return {
+        ...state,
+        todo: state.todo.map((task, index) =>
+          action.payload === index
+            ? { ...task, completed: !task.completed }
+            : task
+        )
+      };
     default:
       return state;
   }

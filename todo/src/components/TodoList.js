@@ -1,6 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
+import { addTodo, toggleTodo } from "../actions";
 
 class TodoList extends React.Component {
   state = {
@@ -25,11 +26,14 @@ class TodoList extends React.Component {
     return <div>"sup"</div>;
   }
 }
-const mapStateToProps = state => ({
-  todo: state.todoReducer.todo
-});
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    todo: state.todo
+  };
+};
 
 export default connect(
   mapStateToProps,
-  { addNewTask, toggleTask }
+  { addTodo, toggleTodo }
 )(TodoList);
