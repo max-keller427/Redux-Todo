@@ -8,7 +8,7 @@ export const addTodo = newTodo => ({
   payload: newTodo
 });
 
-export const toggleTodo = id => ({
+export const toggleTodo = index => ({
   type: TOGGLE_TODO,
-  payload: id
+  payload: index
 });

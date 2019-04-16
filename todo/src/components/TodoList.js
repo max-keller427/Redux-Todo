@@ -16,16 +16,13 @@ class TodoList extends React.Component {
     e.preventDefault();
     console.log("task added");
     this.props.addTodo(this.state.newTodo);
-    this.setState(prevState => {
-      return {
-        newTask: ""
-      };
-    });
+    this.setState({ newTodo: "" });
+    console.log(this.state);
   };
 
   toggleTask = (e, index) => {
     e.preventDefault();
-    this.props.toggleTask(index);
+    this.props.toggleTodo(index);
   };
 
   render() {
@@ -34,15 +31,21 @@ class TodoList extends React.Component {
         <div>
           <h1>To Do List</h1>
           {this.props.todo.map((task, index) => (
-            <h4 onClick={e => this.toggleTask(e, index)} key={index}>
+            <h4
+              onClick={e => this.toggleTask(e, index)}
+              key={index}
+              className={task.completed ? "completed" : null}
+            >
               {task.task}
-              {task.completed && <h4 className="completed" />}
+              {/* {task.completed && className={"completed"} } */}
+              {/* if task.completed === !task.completed
+              h4 classname = completed */}
             </h4>
           ))}
         </div>
         <input
           placeholder="New Task"
-          value={this.state.newTask}
+          value={this.state.newTodo}
           onChange={this.handleChanges}
         />
         <button onClick={this.addTask}>Add Task </button>
@@ -50,6 +53,7 @@ class TodoList extends React.Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   console.log(state);
   return {
